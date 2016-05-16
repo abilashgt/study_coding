@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Simple Web Application</title>
+</head>
+<body>
+    <p>Get Method</p>
+    <form action="/SimpleServlet">
+        <input name="name" placeholder="Name" />
+        <input type="submit" />
+    </form>
+
+    <p>Post Method</p>
+    <form action="/SimpleServlet" method="post">
+        <input name="name" placeholder="Name" />
+        <select name="location" multiple size="10">
+            <option value="here">Here</option>
+            <option value="there">There</option>
+            <option value="far">Far</option>
+            <option value="near">Near</option>
+            <option value="nowhere">No Where</option>
+        </select>
+        <input type="submit" />
+    </form>
+</body>
+</html>

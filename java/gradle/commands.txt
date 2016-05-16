@@ -1,0 +1,4 @@
+For Proxy:
+---------
+gradlew -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=3128
+./gradlew -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=3128

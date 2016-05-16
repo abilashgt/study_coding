@@ -1,0 +1,2 @@
+http://loopj.com/android-async-http/
+https://github.com/loopj/android-async-http/raw/master/releases/android-async-http-1.4.3.jar
