@@ -1,0 +1,2 @@
+organization := "com.abilash.sbt"
+
