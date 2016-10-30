@@ -17,33 +17,30 @@ Thumbs.db
 *~
 *._.DS_Store
 
-# compiled
-a.out
-*.class
-*.pyc
-*.apk
+# General Directories
+/temp/*
+target
 
 # Git
 *.orig
 
+# compiled
+a.out
+*.pyc
+
 # Editors
 nbproject
-*.iml
-.idea
 .project
 .classpath
 .settings
 
-# logs
-#.run.log
-#.last_tmp.py
+# Intellij
+*.iml
+.idea
+*.sc
 
-# libraries
+# Java
+*.class
 *.jar
+*.apk
 
-# Development specific files
-/temp/*
-/php/composer/vendor/*
-/php/composer/composer.phar
-/php/composer/composer.lock
-target
