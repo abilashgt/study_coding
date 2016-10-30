@@ -1,5 +1,3 @@
-package com.abilashthomas.java;
-
 /**
  * Hello world!
  *

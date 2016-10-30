@@ -1,4 +1,4 @@
-package com.abilashthomas.java.collections.comparator;
+package collections.comparator;
 
 import java.util.Comparator;
 
