@@ -1,3 +1,5 @@
+package threads.executors.implementing_callable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,8 +35,13 @@ public class MyCallable implements Callable<String> {
             try {
                 //print the return value of Future, notice the output delay in console
                 // because Future.get() waits for task to get completed
-                System.out.println(new Date()+ "::"+fut.get());
-            } catch (InterruptedException | ExecutionException e) {
+                System.out.println(new Date() + "::" + fut.get());
+            }
+            //catch (InterruptedException | ExecutionException e) {
+            catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            catch (ExecutionException e){
                 e.printStackTrace();
             }
         }

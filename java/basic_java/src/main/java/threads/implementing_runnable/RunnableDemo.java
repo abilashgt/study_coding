@@ -1,5 +1,6 @@
+package threads.implementing_runnable;
+
 class RunnableDemo implements Runnable {
-  private Thread t;
   private String threadName;
 
   RunnableDemo( String name){
