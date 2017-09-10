@@ -1,3 +1,5 @@
+package serialization.tutorialspoint;
+
 import java.io.*;
 
 public class SerializeDemo

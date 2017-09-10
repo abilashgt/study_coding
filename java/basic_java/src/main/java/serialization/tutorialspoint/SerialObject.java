@@ -1,3 +1,5 @@
+package serialization.tutorialspoint;
+
 public class SerialObject implements java.io.Serializable
 {
     public String name;
