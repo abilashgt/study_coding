@@ -1,3 +1,5 @@
+package tools.key_generator.random;
+
 import java.security.SecureRandom;
 import java.math.BigInteger;
 

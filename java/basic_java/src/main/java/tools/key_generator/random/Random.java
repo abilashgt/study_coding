@@ -1,3 +1,5 @@
+package tools.key_generator.random;
+
 import java.util.UUID;
 import java.math.BigInteger;
 

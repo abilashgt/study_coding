@@ -1,3 +1,5 @@
+package class_objects;
+
 class InnerClass {
 	public static void main (String args[]){
 		System.out.println("\nInside Class:");

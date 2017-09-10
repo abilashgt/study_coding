@@ -1,4 +1,4 @@
-class string {
+class StringStudy {
 	public static void main(String args[]){
 		//Enter one command line argument
 

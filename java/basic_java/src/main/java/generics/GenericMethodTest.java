@@ -1,3 +1,5 @@
+package generics;
+
 /*
 ** http://www.tutorialspoint.com/java/java_generics.htm
 */
