@@ -17,30 +17,28 @@ Thumbs.db
 *~
 *._.DS_Store
 
-# General Directories
-/temp/*
-target
-
 # Git
 *.orig
 
 # compiled
 a.out
+*.class
 *.pyc
+*.apk
+*.jar
 
 # Editors
 nbproject
+*.iml
+.idea
 .project
 .classpath
 .settings
 
-# Intellij
-*.iml
-.idea
-*.sc
+# logs
+#.run.log
+#.last_tmp.py
 
-# Java
-*.class
-*.jar
-*.apk
-
+# Development specific files
+/temp/*
+target

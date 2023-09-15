@@ -1,0 +1,14 @@
+use tutorialspoint;
+
+CREATE TABLE IF NOT EXISTS orders (
+ oid Int, date TIMESTAMP, customer_id Int, amount Double)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH 'orders.txt'
+OVERWRITE INTO TABLE orders;
+
+DESCRIBE orders;
+SELECT * FROM orders;
