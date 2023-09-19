@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.abilashthomas</groupId>
+    <artifactId>springws-soap-jibx</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <!-- maven -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <!-- spring -->
+        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.ws.version>2.1.4.RELEASE</spring.ws.version>
+        <spring.test.version>2.5</spring.test.version>
+        <spring.bean.version>3.2.2.RELEASE</spring.bean.version>
+        <!-- others -->
+        <jibx.version>1.2.5</jibx.version>
+    </properties>
+
+    <dependencies>
+        <!-- jibx -->
+        <dependency>
+            <groupId>org.jibx</groupId>
+            <artifactId>jibx-bind</artifactId>
+            <version>${jibx.version}</version>
+        </dependency>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>${spring.ws.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.xml.stream</groupId>
+                    <artifactId>stax-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.bean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.test.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+        <!-- test -->
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+          <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>springws-soap-jibx</finalName>
+        <!-- copy : copy xsd to generated sourcs -->
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/generated-sources/xsd</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        ${basedir}/src/main/resources/xsd
+                                    </directory>
+                                    <include>*.xsd</include>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/src/main/resources</directory>
+                                    <include>*.xsd</include>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- jibx generation -->
+            <!-- Note: requires jdk 1.7 or less. does not work on jdk 1.8 -->
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>jibx-maven-plugin</artifactId>
+                <version>1.2.5</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <schemaLocation>${basedir}/target/generated-sources/xsd</schemaLocation>
+                            <includeSchemas>
+                                <includeSchema>person.xsd</includeSchema>
+                                <includeSchema>GetUserServiceOperations.xsd</includeSchema>
+                                <includeSchema>SaveUserServiceOperations.xsd</includeSchema>
+                            </includeSchemas>
+                            <customizations>
+                                <customization>
+                                    ${basedir}/src/main/resources/xsd/servicename-custom.xml
+                                </customization>
+                            </customizations>
+                        </configuration>
+                        <id>generate-java-code-from-schema-servicename</id>
+                        <goals>
+                            <goal>schema-codegen</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>compile-binding</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>bind</goal>
+                        </goals>
+                        <configuration>
+                            <schemaBindingDirectory>target/generated-sources/</schemaBindingDirectory>
+                            <includeSchemaBindings>
+                                <includeSchemaBindings>servicename-binding.xml</includeSchemaBindings>
+                            </includeSchemaBindings>
+                            <load>true</load>
+                            <validate>true</validate>
+                            <verbose>true</verbose>
+                            <verify>true</verify>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- add generated sources to the project source -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

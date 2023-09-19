@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://user.javaguys.blog.com"  
+ targetNamespace="http://user.javaguys.blog.com" elementFormDefault="qualified"  
+ attributeFormDefault="unqualified">  
+ <xs:element name="User" type="User" />  
+ <xs:complexType name="User">  
+  <xs:sequence>  
+   <xs:element name="UserId" type="xs:string" />  
+   <xs:element name="UserName" type="xs:string" />  
+   <xs:element name="UserGender" type="xs:string" />  
+   <xs:element name="UserStatus" type="xs:string" />  
+  </xs:sequence>  
+ </xs:complexType>  
+</xs:schema>   

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+ xmlns="http://com/javaguys/webservices/getUserServices" xmlns:user="http://user.javaguys.blog.com"  
+ targetNamespace="http://com/javaguys/webservices/getUserServices"  
+ elementFormDefault="qualified">  
+ <xsd:import namespace="http://user.javaguys.blog.com"  
+  schemaLocation="UserDetails.xsd" />  
+ <xsd:element name="GetUserRequest">  
+  <xsd:complexType>  
+   <xsd:sequence>  
+    <xsd:element name="userId" type="xsd:string" />  
+   </xsd:sequence>  
+  </xsd:complexType>  
+ </xsd:element>  
+ <xsd:element name="GetUserResponse">  
+  <xsd:complexType>  
+   <xsd:sequence>  
+    <xsd:element name="userDetails" type="user:User" />  
+   </xsd:sequence>  
+  </xsd:complexType>  
+ </xsd:element>  
+</xsd:schema>    
