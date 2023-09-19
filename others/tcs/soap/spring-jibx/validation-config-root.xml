@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- const.xml -->
+<config>
+<urls>
+<url>validation/validation-config-<service>.xml</url>
+</urls>
+</config> 

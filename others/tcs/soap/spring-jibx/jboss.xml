@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>CpdMgmt/Services/InsuranceMgmtPartyService_Private/v1</context-root>
+</jboss-web>

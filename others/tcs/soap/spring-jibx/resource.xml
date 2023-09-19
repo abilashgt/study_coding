@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema-set binding-file-name="<project-name>-<service-name>-binding.xml"
+generate-all="true" prefer-inline="false" names="*.xsd">
+<schema name="Request_Private.xsd"
+package="auk.corp.<project-name>.<service-name>.model.request" />
+<schema name="ManageInsuranceAgreementIndividualDetailsResponse_Private.xsd"
+package="auk.corp.<project-name>.<service-name>.model.response" />
+
+<schema name="DPAttributes-v1.xsd"
+package="auk.corp.<project-name>.<service-name>.common.model.attributes" />
+<schema name="DPEntities-v1.1.xsd"
+package="auk.corp.<project-name>.<service-name>.common.model.entities" />
+<schema name="DPIndividualDomain-v1.1.1.xsd"
+package="auk.corp.<project-name>.<service-name>.common.model.individualdomain" />
+<schema name="DPServiceCommon-v1.1.1.xsd"
+package="auk.corp.<project-name>.<service-name>.common.model.servicecommon" />
+<schema name="DPReferencedata-v1.1.1.xsd"
+package="auk.corp.<project-name>.<service-name>.common.model.referencedata" />
+
+</schema-set>

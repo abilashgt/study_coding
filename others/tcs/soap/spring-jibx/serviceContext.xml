@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:sws="http://www.springframework.org/schema/web-services"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:util="http://www.springframework.org/schema/util"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:oxm="http://www.springframework.org/schema/oxm"
+xmlns:jee="http://www.springframework.org/schema/jee"	
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       	http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+       	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     	http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm.xsd
+       	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+        ">
+
+<!-- <import resource="classpath:/applicationContext.xml" />
+<import resource="classpath:/serviceContext1.xml" /> -->
+
+<context:component-scan base-package="<parent-namespace>">
+<context:exclude-filter type="assignable" expression="<parent-namespace>.adapter.classimpl" />
+<context:exclude-filter type="assignable" expression="<parent-namespace>.util.classimpl" />
+</context:component-scan>
+
+<sws:annotation-driven />
+<tx:annotation-driven />
+
+<sws:interceptors>
+<bean id="reqresp_Inter"
+class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
+<property name="schemas">
+<list>
+<value>classpath:/DPAttributes-v1.xsd</value>
+<value>classpath:/DPEntities-v1.1.xsd</value>
+<value>classpath:/DPIndividualDomain-v1.1.1.xsd</value>
+<value>classpath:/DPReferencedata-v1.1.1.xsd</value>
+<value>classpath:/DPServiceCommon-v1.1.1.xsd</value>
+<!-- <value>classpath:/DPRMDomain-v1.1.1.xsd</value> -->
+<value>classpath:/cmm/insurancemgmtparty/service1.xsd</value>
+                    <value>classpath:/cmm/insurancemgmtparty/service2.xsd</value>
+</list>
+</property>
+<property name="validateRequest" value="true" />
+<property name="validateResponse" value="true" />
+</bean>
+</sws:interceptors>
+
+<bean id="schemaCollection"
+class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+<description>
+This bean wrap the xsds, and inlines them as a one.
+</description>
+<property name="xsds">
+<list>
+<value>classpath:/DPIndividualDomain-v1.1.1.xsd</value>
+<value>classpath:/DPServiceCommon-v1.1.1.xsd</value>
+<!-- 
+<value>classpath:/DPAttributes-v1.xsd</value>
+<value>classpath:/DPEntities-v1.1.xsd</value>
+<value>classpath:/DPReferencedata-v1.1.1.xsd</value> -->
+</list>
+</property>
+<property name="inline" value="true" />
+</bean>
+
+<sws:dynamic-wsdl id="Service"
+        portTypeName="InsuranceMgmtPartyServicePort" locationUri="/Endpoint">
+        <sws:xsd
+            location="classpath:service1.xsd" />
+        <sws:xsd
+            location="classpath:service2.xsd" />
+    </sws:dynamic-wsdl>
+    
+    <sws:interceptors>
+<bean class="auk.corp.dpcomn.interceptor.TraceDataCaptureInterceptor" />
+</sws:interceptors>
+</beans>

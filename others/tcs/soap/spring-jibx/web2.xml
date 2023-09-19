@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>MMMM</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/*PropertiesContext.xml
+			<!-- classpath*:/context/pam-SecurityContext.xml -->
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>CPDMgmtPrivateServiceInsuranceMgmtPartyServlet</servlet-name>
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/*Context.xml
+				classpath*:/aop/spring-aop-logging.xml
+				<!-- classpath*:/context/pam-SecurityContext.xml -->
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-name-IIIIIIIIIIIIIIIIIIII</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>IIIIIIIIIIIIIIIIIIIIII</param-value>
+	</context-param>
+
+	<!-- <filter> <description>OpenAM Policy Agent Filter</description> <display-name>Agent</display-name> 
+		<filter-name>Agent</filter-name> <filter-class>com.sun.identity.agents.filter.AmAgentFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>Agent</filter-name> <url-pattern>/*</url-pattern> 
+		<dispatcher>REQUEST</dispatcher> <dispatcher>INCLUDE</dispatcher> <dispatcher>FORWARD</dispatcher> 
+		<dispatcher>ERROR</dispatcher> </filter-mapping> -->
+
+	<filter>
+		<description></description>
+		<display-name>TraceDataCaptureFilter</display-name>
+		<filter-name>TraceDataCaptureFilter</filter-name>
+		<filter-class>auk.corp.dpcomn.filter.servlet.TraceDataCaptureFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>TraceDataCaptureFilter</filter-name>
+		<servlet-name>servlet-name-IIIIIIIIIIIIIIIIIIIIIIII</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+</web-app>
