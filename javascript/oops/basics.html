@@ -1,0 +1,36 @@
+<script>
+console.log("Method 1:");
+function Person(name, age){
+	this.name = name;
+	this.age = age;
+}
+
+Person.prototype.summary = function(){
+	return this.name+" is "+this.age + " years old.";
+}
+
+var boy1 = new Person("Roy",14);
+
+console.log("Name:"+boy1.name);
+console.log("Age:"+boy1.age);
+console.log(boy1.summary());
+
+console.log("---------------");
+
+console.log("Method 2:");
+
+var Man = function (name, age){
+	this.name = name;
+	this.age = age;
+
+	this.summary = function(){
+		return this.name+" is "+this.age + " years old.";
+	}
+}
+
+var boy2 = new Man("Tim",12);
+
+console.log("Name:"+boy2.name);
+console.log("Age:"+boy2.age);
+console.log(boy2.summary());
+</script>

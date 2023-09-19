@@ -1,0 +1,23 @@
+<html>
+<script>
+function User(properties){
+    var self = this;
+    for(var i in properties) {
+        (function(i){
+            self["get" + i] = function() {
+               return properties[i];
+            }
+
+            self["set" + i] = function() {
+                properties[i] = val;
+            }
+        })(i);
+    }
+}
+
+var user = new User({ name: "Bob", age: 44});
+alert(user.getname());
+alert(user.getage());
+
+</script>
+</html>

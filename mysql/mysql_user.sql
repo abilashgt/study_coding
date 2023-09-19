@@ -1,0 +1,4 @@
+CREATE USER 'remoteRoot'@'localhost' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'remoteRoot'@'localhost' WITH GRANT OPTION;
+CREATE USER 'remoteRoot'@'%' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'remoteRoot'@'%' WITH GRANT OPTION;

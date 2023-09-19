@@ -1,0 +1,1 @@
+RENAME TABLE `users` TO `employee`

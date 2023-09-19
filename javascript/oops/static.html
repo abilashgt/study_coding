@@ -1,0 +1,28 @@
+<html>
+<script>
+/*
+pro js .. end of ch 2.
+*/
+
+function User() {
+	this["testVar"] = "test var";
+	this["testFn"] = function(){
+		alert("test function");
+	};
+}
+
+//static function
+User.testStaticFn = function(){
+	alert("static function");
+}
+
+var u = new User();
+
+alert(u.testVar);
+u.testFn();
+//u.staticM(); // will not work
+
+User.testStaticFn();
+
+</script>
+</html>

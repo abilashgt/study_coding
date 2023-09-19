@@ -1,0 +1,7 @@
+# admin login
+(from host machine)
+sudo su - postgresql
+psql
+
+# direct login
+psql -U <user_name> -d <db_name> -h <host>

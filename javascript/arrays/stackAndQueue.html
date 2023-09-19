@@ -1,0 +1,25 @@
+<script>
+var a = ["abi",11,"thoms"];
+
+console.log("Stack content:" + a.toString());
+console.log("Stack push '2':" + a.push(2));
+console.log("Stack top:" + a[a.length-1]);
+console.log("Stack pop:" + a.pop());
+console.log("Stack pop:" + a.pop());
+console.log("Length:" + a.length);
+
+console.log("----------------");
+
+console.log("Queue content:" + a.toString());
+console.log("Queue push 'p':" + a.push('p'));
+console.log("Queue shift:" + a.shift());
+console.log("Queue first:" + a[0]);
+console.log("Queue last:" + a[a.length-1]);
+console.log("Length:" + a.length);
+
+console.log("----------------");
+
+console.log("More:");
+console.log("Array unShift '5':" + a.unshift('5'));
+console.log("Array content:" + a.toString());
+</script>

@@ -1,0 +1,22 @@
+<script>
+var obj = {
+	yes: function(){
+		this.val = true;
+	},
+	no: function(){
+		this.val = false;
+	}
+};
+
+console.log("obj.val = " + obj.val); //undefined
+
+obj.yes();
+console.log("obj.val = " + obj.val); //true
+
+window.no = obj.no;
+
+window.no();
+console.log("\n");
+console.log("obj.val = " + obj.val);
+console.log("window.val = " + window.val);
+</script>

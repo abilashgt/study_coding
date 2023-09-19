@@ -1,0 +1,13 @@
+Accessing Database at Server
+----------------------------
+
+Login:
+mysql -u example_user -p
+
+use example_db (optional);  // select db
+show tables;  //list tables
+
+Backup or dump:
+mysqldump -u example_user example_db -p > output_file.sql
+
+
