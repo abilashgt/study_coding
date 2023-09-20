@@ -28,4 +28,11 @@ Active/Active
 - data conflicts - order to commit the writes
 
 
+Redis 
+- Active-Active Geo-Distribution
+  - CRDTs (conflict-free replicated data types)
+- Peer replication
 
+
+Tableau
+ - integration with spark
