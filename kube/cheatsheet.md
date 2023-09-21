@@ -13,3 +13,8 @@ Switch cluster (switch context):
 aws-profile <profile-name>
 kubectl config use-context <cluster-name>
 ```
+
+Login:
+```
+aws sts get-caller-identity
+```
