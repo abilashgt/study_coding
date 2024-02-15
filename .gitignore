@@ -16,6 +16,7 @@ Thumbs.db
 *.htaccess~
 *~
 *._.DS_Store
+.DS_Store
 
 # Git
 *.orig
@@ -26,6 +27,7 @@ a.out
 *.pyc
 *.apk
 *.jar
+.gradle
 
 # Editors
 nbproject
